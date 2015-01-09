@@ -1,3 +1,11 @@
 @(item:Item)
 
-<li class="item"><span class="time">[@item.timestamp]</span> <span>@if(item.user!=null){@item.user.email}</span> > @item.message</li>
+@import models.Item
+
+<style>
+    li.item span {
+        width: 100px; display:inline-block;        
+    }
+</style>
+
+<li class="item"><span>@item.user</span> </span>[@item.timestamp]</span> > @item.message</li>
