@@ -1,8 +1,20 @@
-@(message: String)(level:Int, list:Seq[Item])
+@(message: String)(chats:List[Chat])
+
+@import models.Item
+@import java.util.List
 
 @main("Test App") {
-
     <h1>@message</h1>
-    @listContainer{<h@level> Level: @level </h@level>}(level,list){<div> End of Level</div>}
-
+    @chats.sortBy(_.occurrence).groupBy(_.date.toDate).toSeq.sortBy(_._1).map { dateAndChats =>
+        <div class="date">
+            <h2>-- Chat @dateAndChats._1 --</h2>
+            @dateAndChats._2.map { chat => 
+                @listContainer{
+                    <h3>-- Chat #@chat.occurrence --</h3>
+                }(chat) {
+                    <hr/>
+                }
+            }
+        </div>
+    }
 }
