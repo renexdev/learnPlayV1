@@ -1,0 +1,15 @@
+@(header: Html)(level:Int, items:Seq[String])(footer: Html)
+
+<h@level> here we go! </h@level>
+
+
+<div style="margin-left: @{5*level}%	">
+	@header
+	<ul id="list@level">
+	@items.map { item =>
+		<li> @item </li>
+	}
+	</ul>
+	@footer
+</div>
+

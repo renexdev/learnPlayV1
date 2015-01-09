@@ -1,0 +1,8 @@
+@(message: String)(level:Int, list:Seq[String])
+
+@main("Test App") {
+
+    <h1>@message</h1>
+    @listContainer{<h@level> Level: @level </h@level>}(level,list){<div> End of Level</div>}
+
+}
