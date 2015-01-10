@@ -1,1 +1,1 @@
-Learning Play!
+Learning Play! Finished tutorial up to Ch3 p.78 
