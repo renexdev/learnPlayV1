@@ -5,9 +5,20 @@
 
 @main("Test App") {
     <h1>@message</h1>
+    1.   We sorted all instances based on their occurrence.
+    
+    2.   We grouped instances that have a similar date, resulting in a Map instance
+    where the date is the key and the list of chats is the value.
+    
+    3.   We converted the resulting map's items into a sequence of tuples
+    (key-value pairs).
+    
+    4.   We sorted this sequence by the first element of the tuples (the date).
+    
+    5.   Finally, we mapped all tuple instances to an HTML excerpt.
     @chats.sortBy(_.occurrence).groupBy(_.date.toDate).toSeq.sortBy(_._1).map { dateAndChats =>
         <div class="date">
-            <h2>-- Chat @dateAndChats._1 --</h2>
+            <h2>-- Chat @dateAndChats._1 -- (._1 : date, ._2 chat)</h2>
             @dateAndChats._2.map { chat => 
                 @listContainer{
                     <h3>-- Chat #@chat.occurrence --</h3>
